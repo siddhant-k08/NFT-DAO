@@ -31,3 +31,8 @@ contract FakeNFTMarketplace {
         return false;
     }
 }
+
+// FakeNFTMarketplace deployed to: 0x21b3866B762C8849b080fA6bb17A2B171b33f78F
+
+/** The contract 0x21b3866B762C8849b080fA6bb17A2B171b33f78F has already been verified.
+https://sepolia.etherscan.io/address/0x21b3866B762C8849b080fA6bb17A2B171b33f78F#code*/

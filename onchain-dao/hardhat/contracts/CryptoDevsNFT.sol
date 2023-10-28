@@ -12,3 +12,7 @@ contract CryptoDevsNFT is ERC721Enumerable {
         _safeMint(msg.sender, totalSupply());
     }
 }
+
+// CryptoDevsNFT deployed to: 0x13D5184244403d6Ce3Cb90855b171AB07e766514
+/**The contract 0x13D5184244403d6Ce3Cb90855b171AB07e766514 has already been verified.
+https://sepolia.etherscan.io/address/0x13D5184244403d6Ce3Cb90855b171AB07e766514#code */

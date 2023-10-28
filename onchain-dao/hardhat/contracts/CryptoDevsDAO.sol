@@ -41,14 +41,6 @@ interface ICryptoDevsNFT {
 }
 
 contract CryptoDevsDAO is Ownable {
-
-    // Create a payable constructor which initializes the contract
-    // instances for FakeNFTMarketplace and CryptoDevsNFT
-    // The payable allows this constructor to accept an ETH deposit when it is being deployed
-    constructor(address _nftMarketplace, address _cryptoDevsNFT) payable{
-        nftMarketplace = IFakeNFTMarketplace(_nftMarketplace);
-        cryptoDevsNFT = ICryptoDevsNFT(_cryptoDevsNFT);
-    }
     // Create a struct named Proposal containing all relevant information
 struct Proposal {
     // nftTokenId - the tokenID of the NFT to purchase from FakeNFTMarketplace if the proposal passes
@@ -68,6 +60,17 @@ struct Proposal {
 mapping(uint256 => Proposal) public proposals;
 // Number of proposals that have been created
 uint256 public numProposals;
+
+IFakeNFTMarketplace nftMarketplace;
+ICryptoDevsNFT cryptoDevsNFT;
+
+// Create a payable constructor which initializes the contract
+// instances for FakeNFTMarketplace and CryptoDevsNFT
+// The payable allows this constructor to accept an ETH deposit when it is being deployed
+constructor(address _nftMarketplace, address _cryptoDevsNFT) Ownable(msg.sender)payable {
+    nftMarketplace = IFakeNFTMarketplace(_nftMarketplace);
+    cryptoDevsNFT = ICryptoDevsNFT(_cryptoDevsNFT);
+}
 
 // Create a modifier which only allows a function to be
 // called by someone who owns at least 1 CryptoDevsNFT
@@ -190,3 +193,7 @@ receive() external payable {}
 
 fallback() external payable {}
 }
+
+// CryptoDevsDAO deployed to: 0xEaE897FE0AeE63fCc5Ccdd5014F6a845BFC93Ae7
+// Successfully verified contract CryptoDevsDAO on the block explorer.
+// https://sepolia.etherscan.io/address/0xEaE897FE0AeE63fCc5Ccdd5014F6a845BFC93Ae7#code
