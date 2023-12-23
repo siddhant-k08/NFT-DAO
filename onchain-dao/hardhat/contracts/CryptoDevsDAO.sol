@@ -41,6 +41,9 @@ interface ICryptoDevsNFT {
 }
 
 contract CryptoDevsDAO is Ownable {
+
+    // Create an event emiting all function calls
+event ProposalCreated (uint256 nftTokenId);
     // Create a struct named Proposal containing all relevant information
 struct Proposal {
     // nftTokenId - the tokenID of the NFT to purchase from FakeNFTMarketplace if the proposal passes
@@ -94,7 +97,8 @@ function createProposal(uint256 _nftTokenId)
     proposal.deadline = block.timestamp + 5 minutes;
 
     numProposals++;
-
+    
+    emit ProposalCreated(_nftTokenId);
     return numProposals - 1;
 }
 
@@ -194,6 +198,6 @@ receive() external payable {}
 fallback() external payable {}
 }
 
-// CryptoDevsDAO deployed to: 0xEaE897FE0AeE63fCc5Ccdd5014F6a845BFC93Ae7
+// CryptoDevsDAO deployed to: 0x632592e3d570C73d8e77E1F2d98EfdaF1d8F9e23
 // Successfully verified contract CryptoDevsDAO on the block explorer.
-// https://sepolia.etherscan.io/address/0xEaE897FE0AeE63fCc5Ccdd5014F6a845BFC93Ae7#code
+// https://sepolia.etherscan.io/address/0x632592e3d570C73d8e77E1F2d98EfdaF1d8F9e23#code 
